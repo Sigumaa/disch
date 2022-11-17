@@ -15,6 +15,11 @@ import (
 // When Hiragana ,Katakana is entered, it is automatically interpreted as romaji and converted to emoji.
 // example: "こんにちは" -> ":regional_indicator_k: :regional_indicator_o: :regional_indicator_n: :regional_indicator_n: :regional_indicator_i: :regional_indicator_c: :regional_indicator_h: :regional_indicator_i: :regional_indicator_w: :regional_indicator_a:"
 
+var (
+	ErrIC = errors.New("invalid character")
+	ErrNN = errors.New("not number")
+)
+
 func isHiragana(r rune) bool {
 	return 0x3040 <= r && r <= 0x309f
 }
@@ -180,7 +185,7 @@ func hikaToEmoji(r rune) (string, error) {
 	case 'ぽ', 'ポ':
 		return ":regional_indicator_p: :regional_indicator_o:", nil
 	default:
-		return "", errors.New("invalid character")
+		return "", ErrIC
 
 	}
 }
@@ -208,7 +213,7 @@ func numToEmoji(r rune) (string, error) {
 	case '9':
 		return ":nine:", nil
 	default:
-		return "", errors.New("not number")
+		return "", ErrNN
 	}
 }
 
@@ -233,7 +238,7 @@ func Convert(text string) (res string, err error) {
 		} else if isSpace(r) {
 			res += " "
 		} else {
-			return "", errors.New("invalid character")
+			return "", ErrIC
 		}
 	}
 	return res, nil
