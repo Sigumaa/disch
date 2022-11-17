@@ -15,13 +15,19 @@ func TestConvert(t *testing.T) {
 		{
 			name:    "いろいろまじってるやつ",
 			args:    args{text: "あア1"},
-			wantRes: ":regional_indicator_a::regional_indicator_a::one:",
+			wantRes: ":regional_indicator_a: :regional_indicator_a: :one: ",
 			wantErr: false,
 		},
 		{
 			name:    "空白があると",
 			args:    args{text: "あ ア 1"},
-			wantRes: ":regional_indicator_a: :regional_indicator_a: :one:",
+			wantRes: ":regional_indicator_a:  :regional_indicator_a:  :one: ",
+			wantErr: false,
+		},
+		{
+			name:    "ちょんちょん",
+			args:    args{text: "ばか"},
+			wantRes: ":regional_indicator_b: :regional_indicator_a: :regional_indicator_k: :regional_indicator_a: ",
 			wantErr: false,
 		},
 	}

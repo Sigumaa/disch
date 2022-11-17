@@ -129,6 +129,56 @@ func hikaToEmoji(r rune) (string, error) {
 		return ":regional_indicator_w: :regional_indicator_o:", nil
 	case 'ん', 'ン':
 		return ":regional_indicator_n:", nil
+	case 'が', 'ガ':
+		return ":regional_indicator_g: :regional_indicator_a:", nil
+	case 'ぎ', 'ギ':
+		return ":regional_indicator_g: :regional_indicator_i:", nil
+	case 'ぐ', 'グ':
+		return ":regional_indicator_g: :regional_indicator_u:", nil
+	case 'げ', 'ゲ':
+		return ":regional_indicator_g: :regional_indicator_e:", nil
+	case 'ご', 'ゴ':
+		return ":regional_indicator_g: :regional_indicator_o:", nil
+	case 'ざ', 'ザ':
+		return ":regional_indicator_z: :regional_indicator_a:", nil
+	case 'じ', 'ジ':
+		return ":regional_indicator_z: :regional_indicator_i:", nil
+	case 'ず', 'ズ':
+		return ":regional_indicator_z: :regional_indicator_u:", nil
+	case 'ぜ', 'ゼ':
+		return ":regional_indicator_z: :regional_indicator_e:", nil
+	case 'ぞ', 'ゾ':
+		return ":regional_indicator_z: :regional_indicator_o:", nil
+	case 'だ', 'ダ':
+		return ":regional_indicator_d: :regional_indicator_a:", nil
+	case 'ぢ', 'ヂ':
+		return ":regional_indicator_d: :regional_indicator_i:", nil
+	case 'づ', 'ヅ':
+		return ":regional_indicator_d: :regional_indicator_u:", nil
+	case 'で', 'デ':
+		return ":regional_indicator_d: :regional_indicator_e:", nil
+	case 'ど', 'ド':
+		return ":regional_indicator_d: :regional_indicator_o:", nil
+	case 'ば', 'バ':
+		return ":regional_indicator_b: :regional_indicator_a:", nil
+	case 'び', 'ビ':
+		return ":regional_indicator_b: :regional_indicator_i:", nil
+	case 'ぶ', 'ブ':
+		return ":regional_indicator_b: :regional_indicator_u:", nil
+	case 'べ', 'ベ':
+		return ":regional_indicator_b: :regional_indicator_e:", nil
+	case 'ぼ', 'ボ':
+		return ":regional_indicator_b: :regional_indicator_o:", nil
+	case 'ぱ', 'パ':
+		return ":regional_indicator_p: :regional_indicator_a:", nil
+	case 'ぴ', 'ピ':
+		return ":regional_indicator_p: :regional_indicator_i:", nil
+	case 'ぷ', 'プ':
+		return ":regional_indicator_p: :regional_indicator_u:", nil
+	case 'ぺ', 'ペ':
+		return ":regional_indicator_p: :regional_indicator_e:", nil
+	case 'ぽ', 'ポ':
+		return ":regional_indicator_p: :regional_indicator_o:", nil
 	default:
 		return "", errors.New("invalid character")
 
@@ -169,13 +219,13 @@ func Convert(text string) (res string, err error) {
 			if err != nil {
 				return "", err
 			}
-			res += emoji
+			res += emoji + " "
 		} else if isNumber(r) {
 			emoji, err := numToEmoji(r)
 			if err != nil {
 				return "", err
 			}
-			res += emoji
+			res += emoji + " "
 		} else if isAlphabet(r) {
 			r = unicode.ToLower(r)
 			emoji := fmt.Sprintf(":regional_indicator_%c:", r)
