@@ -14,6 +14,9 @@ func main() {
 		fmt.Print("> ")
 		var input string
 		fmt.Scan(&input)
+		if input == "exit()" {
+			break
+		}
 		res, err := disch.Convert(input)
 		if err != nil {
 			fmt.Println(err)
