@@ -2,8 +2,6 @@ package disch
 
 import (
 	"errors"
-	"fmt"
-	"unicode"
 )
 
 // this is a sinmple library.
@@ -43,147 +41,147 @@ func isNumber(r rune) bool {
 func hikaToEmoji(r rune) (string, error) {
 	switch r {
 	case 'あ', 'ア':
-		return ":regional_indicator_a:", nil
+		return a, nil
 	case 'い', 'イ':
-		return ":regional_indicator_i:", nil
+		return i, nil
 	case 'う', 'ウ':
-		return ":regional_indicator_u:", nil
+		return u, nil
 	case 'え', 'エ':
-		return ":regional_indicator_e:", nil
+		return e, nil
 	case 'お', 'オ':
-		return ":regional_indicator_o:", nil
+		return o, nil
 	case 'か', 'カ':
-		return ":regional_indicator_k: :regional_indicator_a:", nil
+		return ka, nil
 	case 'き', 'キ':
-		return ":regional_indicator_k: :regional_indicator_i:", nil
+		return ki, nil
 	case 'く', 'ク':
-		return ":regional_indicator_k: :regional_indicator_u:", nil
+		return ku, nil
 	case 'け', 'ケ':
-		return ":regional_indicator_k: :regional_indicator_e:", nil
+		return ke, nil
 	case 'こ', 'コ':
-		return ":regional_indicator_k: :regional_indicator_o:", nil
+		return ko, nil
 	case 'さ', 'サ':
-		return ":regional_indicator_s: :regional_indicator_a:", nil
+		return sa, nil
 	case 'し', 'シ':
-		return ":regional_indicator_s: :regional_indicator_h: :regional_indicator_i:", nil
+		return shi, nil
 	case 'す', 'ス':
-		return ":regional_indicator_s: :regional_indicator_u:", nil
+		return su, nil
 	case 'せ', 'セ':
-		return ":regional_indicator_s: :regional_indicator_e:", nil
+		return se, nil
 	case 'そ', 'ソ':
-		return ":regional_indicator_s: :regional_indicator_o:", nil
+		return so, nil
 	case 'た', 'タ':
-		return ":regional_indicator_t: :regional_indicator_a:", nil
+		return ta, nil
 	case 'ち', 'チ':
-		return ":regional_indicator_c: :regional_indicator_h: :regional_indicator_i:", nil
+		return chi, nil
 	case 'つ', 'ツ':
-		return ":regional_indicator_t: :regional_indicator_u:", nil
+		return tsu, nil
 	case 'て', 'テ':
-		return ":regional_indicator_t: :regional_indicator_e:", nil
+		return te, nil
 	case 'と', 'ト':
-		return ":regional_indicator_t: :regional_indicator_o:", nil
+		return to, nil
 	case 'な', 'ナ':
-		return ":regional_indicator_n: :regional_indicator_a:", nil
+		return na, nil
 	case 'に', 'ニ':
-		return ":regional_indicator_n: :regional_indicator_i:", nil
+		return ni, nil
 	case 'ぬ', 'ヌ':
-		return ":regional_indicator_n: :regional_indicator_u:", nil
+		return nu, nil
 	case 'ね', 'ネ':
-		return ":regional_indicator_n: :regional_indicator_e:", nil
+		return ne, nil
 	case 'の', 'ノ':
-		return ":regional_indicator_n: :regional_indicator_o:", nil
+		return no, nil
 	case 'は', 'ハ':
-		return ":regional_indicator_h: :regional_indicator_a:", nil
+		return ha, nil
 	case 'ひ', 'ヒ':
-		return ":regional_indicator_h: :regional_indicator_i:", nil
+		return hi, nil
 	case 'ふ', 'フ':
-		return ":regional_indicator_h: :regional_indicator_u:", nil
+		return hu, nil
 	case 'へ', 'ヘ':
-		return ":regional_indicator_h: :regional_indicator_e:", nil
+		return he, nil
 	case 'ほ', 'ホ':
-		return ":regional_indicator_h: :regional_indicator_o:", nil
+		return ho, nil
 	case 'ま', 'マ':
-		return ":regional_indicator_m: :regional_indicator_a:", nil
+		return ma, nil
 	case 'み', 'ミ':
-		return ":regional_indicator_m: :regional_indicator_i:", nil
+		return mi, nil
 	case 'む', 'ム':
-		return ":regional_indicator_m: :regional_indicator_u:", nil
+		return mu, nil
 	case 'め', 'メ':
-		return ":regional_indicator_m: :regional_indicator_e:", nil
+		return me, nil
 	case 'も', 'モ':
-		return ":regional_indicator_m: :regional_indicator_o:", nil
+		return mo, nil
 	case 'や', 'ヤ':
-		return ":regional_indicator_y: :regional_indicator_a:", nil
+		return ya, nil
 	case 'ゆ', 'ユ':
-		return ":regional_indicator_y: :regional_indicator_u:", nil
+		return yu, nil
 	case 'よ', 'ヨ':
-		return ":regional_indicator_y: :regional_indicator_o:", nil
+		return yo, nil
 	case 'ら', 'ラ':
-		return ":regional_indicator_r: :regional_indicator_a:", nil
+		return ra, nil
 	case 'り', 'リ':
-		return ":regional_indicator_r: :regional_indicator_i:", nil
+		return ri, nil
 	case 'る', 'ル':
-		return ":regional_indicator_r: :regional_indicator_u:", nil
+		return ru, nil
 	case 'れ', 'レ':
-		return ":regional_indicator_r: :regional_indicator_e:", nil
+		return re, nil
 	case 'ろ', 'ロ':
-		return ":regional_indicator_r: :regional_indicator_o:", nil
+		return ro, nil
 	case 'わ', 'ワ':
-		return ":regional_indicator_w: :regional_indicator_a:", nil
+		return wa, nil
 	case 'を', 'ヲ':
-		return ":regional_indicator_w: :regional_indicator_o:", nil
+		return wo, nil
 	case 'ん', 'ン':
-		return ":regional_indicator_n:", nil
+		return n, nil
 	case 'が', 'ガ':
-		return ":regional_indicator_g: :regional_indicator_a:", nil
+		return ga, nil
 	case 'ぎ', 'ギ':
-		return ":regional_indicator_g: :regional_indicator_i:", nil
+		return gi, nil
 	case 'ぐ', 'グ':
-		return ":regional_indicator_g: :regional_indicator_u:", nil
+		return gu, nil
 	case 'げ', 'ゲ':
-		return ":regional_indicator_g: :regional_indicator_e:", nil
+		return ge, nil
 	case 'ご', 'ゴ':
-		return ":regional_indicator_g: :regional_indicator_o:", nil
+		return goo, nil
 	case 'ざ', 'ザ':
-		return ":regional_indicator_z: :regional_indicator_a:", nil
+		return za, nil
 	case 'じ', 'ジ':
-		return ":regional_indicator_z: :regional_indicator_i:", nil
+		return zi, nil
 	case 'ず', 'ズ':
-		return ":regional_indicator_z: :regional_indicator_u:", nil
+		return zu, nil
 	case 'ぜ', 'ゼ':
-		return ":regional_indicator_z: :regional_indicator_e:", nil
+		return ze, nil
 	case 'ぞ', 'ゾ':
-		return ":regional_indicator_z: :regional_indicator_o:", nil
+		return zo, nil
 	case 'だ', 'ダ':
-		return ":regional_indicator_d: :regional_indicator_a:", nil
+		return da, nil
 	case 'ぢ', 'ヂ':
-		return ":regional_indicator_d: :regional_indicator_i:", nil
+		return zi, nil
 	case 'づ', 'ヅ':
-		return ":regional_indicator_d: :regional_indicator_u:", nil
+		return zu, nil
 	case 'で', 'デ':
-		return ":regional_indicator_d: :regional_indicator_e:", nil
+		return de, nil
 	case 'ど', 'ド':
-		return ":regional_indicator_d: :regional_indicator_o:", nil
+		return do, nil
 	case 'ば', 'バ':
-		return ":regional_indicator_b: :regional_indicator_a:", nil
+		return ba, nil
 	case 'び', 'ビ':
-		return ":regional_indicator_b: :regional_indicator_i:", nil
+		return bi, nil
 	case 'ぶ', 'ブ':
-		return ":regional_indicator_b: :regional_indicator_u:", nil
+		return bu, nil
 	case 'べ', 'ベ':
-		return ":regional_indicator_b: :regional_indicator_e:", nil
+		return be, nil
 	case 'ぼ', 'ボ':
-		return ":regional_indicator_b: :regional_indicator_o:", nil
+		return bo, nil
 	case 'ぱ', 'パ':
-		return ":regional_indicator_p: :regional_indicator_a:", nil
+		return pa, nil
 	case 'ぴ', 'ピ':
-		return ":regional_indicator_p: :regional_indicator_i:", nil
+		return pi, nil
 	case 'ぷ', 'プ':
-		return ":regional_indicator_p: :regional_indicator_u:", nil
+		return pu, nil
 	case 'ぺ', 'ペ':
-		return ":regional_indicator_p: :regional_indicator_e:", nil
+		return pe, nil
 	case 'ぽ', 'ポ':
-		return ":regional_indicator_p: :regional_indicator_o:", nil
+		return po, nil
 	default:
 		return "", ErrIC
 
@@ -193,27 +191,86 @@ func hikaToEmoji(r rune) (string, error) {
 func numToEmoji(r rune) (string, error) {
 	switch r {
 	case '0':
-		return ":zero:", nil
+		return zero, nil
 	case '1':
-		return ":one:", nil
+		return one, nil
 	case '2':
-		return ":two:", nil
+		return two, nil
 	case '3':
-		return ":three:", nil
+		return three, nil
 	case '4':
-		return ":four:", nil
+		return four, nil
 	case '5':
-		return ":five:", nil
+		return five, nil
 	case '6':
-		return ":six:", nil
+		return six, nil
 	case '7':
-		return ":seven:", nil
+		return seven, nil
 	case '8':
-		return ":eight:", nil
+		return eight, nil
 	case '9':
-		return ":nine:", nil
+		return nine, nil
 	default:
 		return "", ErrNN
+	}
+}
+
+func alToEmoji(rr rune) (string, error) {
+	switch rr {
+	case 'a', 'A':
+		return a, nil
+	case 'b', 'B':
+		return b, nil
+	case 'c', 'C':
+		return c, nil
+	case 'd', 'D':
+		return d, nil
+	case 'e', 'E':
+		return e, nil
+	case 'f', 'F':
+		return f, nil
+	case 'g', 'G':
+		return g, nil
+	case 'h', 'H':
+		return h, nil
+	case 'i', 'I':
+		return i, nil
+	case 'j', 'J':
+		return j, nil
+	case 'k', 'K':
+		return k, nil
+	case 'l', 'L':
+		return l, nil
+	case 'm', 'M':
+		return m, nil
+	case 'n', 'N':
+		return n, nil
+	case 'o', 'O':
+		return o, nil
+	case 'p', 'P':
+		return p, nil
+	case 'q', 'Q':
+		return q, nil
+	case 'r', 'R':
+		return r, nil
+	case 's', 'S':
+		return s, nil
+	case 't', 'T':
+		return t, nil
+	case 'u', 'U':
+		return u, nil
+	case 'v', 'V':
+		return v, nil
+	case 'w', 'W':
+		return w, nil
+	case 'x', 'X':
+		return x, nil
+	case 'y', 'Y':
+		return y, nil
+	case 'z', 'Z':
+		return z, nil
+	default:
+		return "", ErrIC
 	}
 }
 
@@ -225,21 +282,28 @@ func Convert(text string) (res string, err error) {
 				return "", err
 			}
 			res += emoji + " "
+
 		} else if isNumber(r) {
 			emoji, err := numToEmoji(r)
 			if err != nil {
 				return "", err
 			}
 			res += emoji + " "
+
 		} else if isAlphabet(r) {
-			r = unicode.ToLower(r)
-			emoji := fmt.Sprintf(":regional_indicator_%c:", r)
-			res += emoji
+			emoji, err := alToEmoji(r)
+			if err != nil {
+				return "", err
+			}
+			res += emoji + " "
+
 		} else if isSpace(r) {
 			res += " "
+
 		} else {
 			return "", ErrIC
 		}
 	}
+
 	return res, nil
 }
