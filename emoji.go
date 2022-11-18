@@ -109,3 +109,8 @@ const (
 	eight = ":eight:"
 	nine  = ":nine:"
 )
+
+const (
+	exclamation = ":bangbang:"
+	question    = ":question:"
+)
