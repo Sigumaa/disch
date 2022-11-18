@@ -26,9 +26,10 @@ func main() {
 			fmt.Println(err)
 			continue
 		}
-		//fmt.Println(res)
 		if err := clipboard.WriteAll(res); err != nil {
 			fmt.Println(err)
+			fmt.Println("Failed to copy to clipboard. Please copy manually.")
+			fmt.Println(res)
 			continue
 		}
 		fmt.Println("Copied!!")
