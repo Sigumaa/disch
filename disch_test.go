@@ -178,6 +178,80 @@ func Test_isNumber(t *testing.T) {
 	}
 }
 
+func Test_isSpace(t *testing.T) {
+	type args struct {
+		r rune
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "スペースって...コト！？",
+			args: args{r: ' '},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isSpace(tt.args.r); got != tt.want {
+				t.Errorf("isSpace() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+// !
+func Test_isQuestion(t *testing.T) {
+	type args struct {
+		r rune
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "？って...コト！？",
+			args: args{r: '?'},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isQuestion(tt.args.r); got != tt.want {
+				t.Errorf("isQuestion() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+
+}
+
+func Test_isExclamation(t *testing.T) {
+	type args struct {
+		r rune
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "！って...コト！？",
+			args: args{r: '!'},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isExclamation(tt.args.r); got != tt.want {
+				t.Errorf("isExclamation() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func Test_numToEmoji(t *testing.T) {
 	type args struct {
 		r rune
