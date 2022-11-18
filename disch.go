@@ -2,9 +2,10 @@ package disch
 
 import (
 	"errors"
+	"unicode"
 )
 
-// this is a sinmple library.
+// this is a simple library.
 
 // Converts the given text to Discord Emojis.
 // example: "Hello World" -> ":regional_indicator_h: :regional_indicator_e: :regional_indicator_l: :regional_indicator_l: :regional_indicator_o: :regional_indicator_w: :regional_indicator_o: :regional_indicator_r: :regional_indicator_l: :regional_indicator_d:"
@@ -16,35 +17,19 @@ import (
 var (
 	ErrIC = errors.New("invalid character")
 	ErrNN = errors.New("not number")
+	ErrCV = errors.New("can't convert")
 )
 
-func isHiragana(r rune) bool {
-	return 0x3040 <= r && r <= 0x309f
-}
-
-func isKatakana(r rune) bool {
-	return 0x30a0 <= r && r <= 0x30ff
-}
-
-func isAlphabet(r rune) bool {
-	return ('a' <= r && r <= 'z') || ('A' <= r && r <= 'Z')
-}
-
-func isNumber(r rune) bool {
-	return '0' <= r && r <= '9'
-}
-
-func isSpace(r rune) bool {
-	return r == ' ' || r == '　'
-}
-
-// ! ?
 func isExclamation(r rune) bool {
 	return r == '!' || r == '！'
 }
 
 func isQuestion(r rune) bool {
 	return r == '?' || r == '？'
+}
+
+func isHyphen(r rune) bool {
+	return r == '-' || r == 'ー'
 }
 
 func hikaToEmoji(r rune) (string, error) {
@@ -285,33 +270,43 @@ func alToEmoji(rr rune) (string, error) {
 
 func Convert(text string) (res string, err error) {
 	for _, r := range text {
-		if isHiragana(r) || isKatakana(r) {
+		switch {
+		case unicode.Is(unicode.Hiragana, r):
 			emoji, err := hikaToEmoji(r)
 			if err != nil {
 				return "", err
 			}
 			res += emoji + " "
-		} else if isNumber(r) {
+		case unicode.Is(unicode.Katakana, r):
+			emoji, err := hikaToEmoji(r)
+			if err != nil {
+				return "", err
+			}
+			res += emoji + " "
+		case unicode.Is(unicode.Space, r):
+			res += "    "
+		case unicode.Is(unicode.Number, r):
 			emoji, err := numToEmoji(r)
 			if err != nil {
 				return "", err
 			}
 			res += emoji + " "
-		} else if isAlphabet(r) {
+		case unicode.Is(unicode.Upper, r), unicode.Is(unicode.Lower, r):
 			emoji, err := alToEmoji(r)
 			if err != nil {
 				return "", err
 			}
 			res += emoji + " "
-		} else if isSpace(r) {
-			res += "    "
-		} else if isExclamation(r) {
+		case isExclamation(r):
 			res += exclamation + " "
-		} else if isQuestion(r) {
+		case isQuestion(r):
 			res += question + " "
-		} else {
-			return "", ErrIC
+		case isHyphen(r):
+			res += hyphen + " "
+		default:
+			return "", ErrCV
 		}
+
 	}
 
 	return res, nil

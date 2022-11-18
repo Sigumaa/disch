@@ -113,4 +113,5 @@ const (
 const (
 	exclamation = ":bangbang:"
 	question    = ":question:"
+	hyphen      = ":heavy_minus_sign:"
 )
