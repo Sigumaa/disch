@@ -35,7 +35,7 @@ func isNumber(r rune) bool {
 }
 
 func isSpace(r rune) bool {
-	return r == ' '
+	return r == ' ' || r == '　'
 }
 
 // ! ?
@@ -304,7 +304,7 @@ func Convert(text string) (res string, err error) {
 			}
 			res += emoji + " "
 		} else if isSpace(r) {
-			res += " "
+			res += "    "
 		} else if isExclamation(r) {
 			res += exclamation + " "
 		} else if isQuestion(r) {

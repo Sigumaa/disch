@@ -21,7 +21,7 @@ func TestConvert(t *testing.T) {
 		{
 			name:    "空白があると",
 			args:    args{text: "あ ア 1"},
-			wantRes: ":regional_indicator_a:  :regional_indicator_a:  :one: ",
+			wantRes: ":regional_indicator_a:     :regional_indicator_a:     :one: ",
 			wantErr: false,
 		},
 		{
@@ -190,6 +190,11 @@ func Test_isSpace(t *testing.T) {
 		{
 			name: "スペースって...コト！？",
 			args: args{r: ' '},
+			want: true,
+		},
+		{
+			name: "スペースって...コト！？",
+			args: args{r: '　'},
 			want: true,
 		},
 	}

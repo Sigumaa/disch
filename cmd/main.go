@@ -5,16 +5,19 @@ package main
 // Receive text as an argument and display the converted text.
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/Sigumaa/disch"
 	"github.com/atotto/clipboard"
+	"os"
 )
 
 func main() {
+	s := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("> ")
-		var input string
-		fmt.Scan(&input)
+		s.Scan()
+		input := s.Text()
 		if input == "exit()" {
 			break
 		}
@@ -26,6 +29,7 @@ func main() {
 		//fmt.Println(res)
 		if err := clipboard.WriteAll(res); err != nil {
 			fmt.Println(err)
+			continue
 		}
 		fmt.Println("Copied!!")
 	}
