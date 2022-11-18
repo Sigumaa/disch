@@ -7,6 +7,7 @@ package main
 import (
 	"fmt"
 	"github.com/Sigumaa/disch"
+	"github.com/atotto/clipboard"
 )
 
 func main() {
@@ -22,6 +23,10 @@ func main() {
 			fmt.Println(err)
 			continue
 		}
-		fmt.Println(res)
+		//fmt.Println(res)
+		if err := clipboard.WriteAll(res); err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println("Copied!!")
 	}
 }
